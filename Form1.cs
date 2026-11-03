@@ -51,7 +51,6 @@ namespace MongDBUpload
             chkDownload.Checked = _opt.DownloadFileContent;
             chkWriteSql.Checked = _opt.WriteSqlMapping;
             chkSkipExisting.Checked = _opt.SkipExisting;
-            chkDeleteCos.Checked = _opt.DeleteCosSource;
 
             numMaxCount.Minimum = 0;
             numMaxCount.Maximum = 1000000;
@@ -120,7 +119,6 @@ namespace MongDBUpload
             _opt.DownloadFileContent = chkDownload.Checked;
             _opt.WriteSqlMapping = chkWriteSql.Checked;
             _opt.SkipExisting = chkSkipExisting.Checked;
-            _opt.DeleteCosSource = chkDeleteCos.Checked;
 
             // 0 = 全部，>0 = 本次最多同步多少个文件到 MongoDB
             _opt.MaxCount = (int)numMaxCount.Value;

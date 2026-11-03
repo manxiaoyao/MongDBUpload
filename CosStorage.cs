@@ -159,27 +159,5 @@ namespace MongDBUpload
                 return $"https://{_opt.CosBucket}.cos.{_opt.CosRegion}.myqcloud.com/{key}";
             }
         }
-
-        /// <summary>
-        /// 批量删除对象，返回删除请求是否成功
-        /// </summary>
-        public int DeleteObjects(List<string> keys, Action<string>? log = null)
-        {
-            if (keys == null || keys.Count == 0) return 0;
-
-            int total = 0;
-            // COS 单次批量删除上限 1000，分批处理
-            for (int i = 0; i < keys.Count; i += 1000)
-            {
-                var batch = keys.Skip(i).Take(1000).ToList();
-                DeleteMultiObjectRequest request = new DeleteMultiObjectRequest(bucket: _opt.CosBucket);
-                request.SetDeleteQuiet(false);
-                request.SetObjectKeys(batch);
-                _cosXml.DeleteMultiObjects(request);
-                total += batch.Count;
-                log?.Invoke($"  已删除 {total}/{keys.Count} 个对象...");
-            }
-            return total;
-        }
     }
 }
