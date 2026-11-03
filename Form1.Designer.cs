@@ -47,7 +47,6 @@ namespace MongDBUpload
             this.chkDownload = new System.Windows.Forms.CheckBox();
             this.chkWriteSql = new System.Windows.Forms.CheckBox();
             this.chkSkipExisting = new System.Windows.Forms.CheckBox();
-            this.chkDeleteCos = new System.Windows.Forms.CheckBox();
             this.numMaxCount = new System.Windows.Forms.NumericUpDown();
             this.lblMaxCount = new System.Windows.Forms.Label();
             this.lblMaxCountTip = new System.Windows.Forms.Label();
@@ -89,11 +88,6 @@ namespace MongDBUpload
             this.chkSkipExisting.Location = new System.Drawing.Point(520, 24);
             this.chkSkipExisting.AutoSize = true;
 
-            this.chkDeleteCos.Text = "迁移成功后删除腾讯云源文件（危险）";
-            this.chkDeleteCos.Location = new System.Drawing.Point(660, 24);
-            this.chkDeleteCos.AutoSize = true;
-            this.chkDeleteCos.ForeColor = System.Drawing.Color.Firebrick;
-
             this.lblMaxCount.Text = "本次最多处理(0=全部)：";
             this.lblMaxCount.Location = new System.Drawing.Point(12, 56);
             this.lblMaxCount.AutoSize = true;
@@ -113,7 +107,6 @@ namespace MongDBUpload
             grpOption.Controls.Add(this.chkDownload);
             grpOption.Controls.Add(this.chkWriteSql);
             grpOption.Controls.Add(this.chkSkipExisting);
-            grpOption.Controls.Add(this.chkDeleteCos);
             grpOption.Controls.Add(this.lblMaxCount);
             grpOption.Controls.Add(this.numMaxCount);
             grpOption.Controls.Add(this.lblMaxCountTip);
@@ -324,7 +317,6 @@ namespace MongDBUpload
         private System.Windows.Forms.CheckBox chkDownload;
         private System.Windows.Forms.CheckBox chkWriteSql;
         private System.Windows.Forms.CheckBox chkSkipExisting;
-        private System.Windows.Forms.CheckBox chkDeleteCos;
         private System.Windows.Forms.NumericUpDown numMaxCount;
         private System.Windows.Forms.Label lblMaxCount;
         private System.Windows.Forms.Label lblMaxCountTip;

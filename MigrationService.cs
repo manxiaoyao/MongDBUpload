@@ -109,7 +109,6 @@ namespace MongDBUpload
                 return result;
             }
 
-            var cosNeedDelete = new List<string>();
             int index = 0;
 
             foreach (var obj in objects)
@@ -178,11 +177,6 @@ namespace MongDBUpload
                     sql?.Upsert(row);
                     result.Success++;
                     result.TotalBytes += data.Length;
-
-                    if (_opt.DeleteCosSource)
-                    {
-                        cosNeedDelete.Add(obj.Key);
-                    }
                 }
                 catch (OperationCanceledException)
                 {
@@ -206,14 +200,6 @@ namespace MongDBUpload
                 }
 
                 _progress(index, objects.Count);
-            }
-
-            // 3. 可选：删除腾讯云源文件
-            if (_opt.DeleteCosSource && cosNeedDelete.Count > 0)
-            {
-                _log($"正在删除腾讯云源文件，共 {cosNeedDelete.Count} 个 ...");
-                int deleted = cos.DeleteObjects(cosNeedDelete, _log);
-                _log($"腾讯云源文件删除完成，成功 {deleted} 个。");
             }
 
             result.Elapsed = sw.Elapsed;

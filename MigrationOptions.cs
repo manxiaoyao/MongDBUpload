@@ -71,9 +71,6 @@ namespace MongDBUpload
         /// <summary>目标已存在时跳过（按 COS 地址去重）</summary>
         public bool SkipExisting { get; set; } = true;
 
-        /// <summary>迁移完成后删除 COS 上的源文件（危险，默认关闭）</summary>
-        public bool DeleteCosSource { get; set; }
-
         /// <summary>数据迁移后 MongoDB 文件下载地址的前缀，用于拼接最终地址（来自配置文件）</summary>
         public string MongoUrlPrefix { get; set; } = "";
 
@@ -117,7 +114,6 @@ namespace MongDBUpload
             DownloadFileContent = loaded.DownloadFileContent;
             WriteSqlMapping = loaded.WriteSqlMapping;
             SkipExisting = loaded.SkipExisting;
-            DeleteCosSource = loaded.DeleteCosSource;
             MongoUrlPrefix = loaded.MongoUrlPrefix ?? "";
         }
 
